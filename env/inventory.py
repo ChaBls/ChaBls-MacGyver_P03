@@ -1,9 +1,9 @@
 # import the modules
-from macgyver import macGyver()
+from macgyver import MacGyver
 # module initialization
 
 
-class Inventoy (macGyver):   # child class
+class Inventoy (MacGyver):   # child class
     def __init__(self):
         pass
         # configure typo of the inventory
