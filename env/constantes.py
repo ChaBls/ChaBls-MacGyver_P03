@@ -1,7 +1,8 @@
-walls_tile_size = 40
-walls_tile_number = 134
-floor_tile_size = 40
-floor_tile_number = 91
+tile_size = 40
+tile_number = 134
 
-width = walls_tile_size * walls_tile_number
-height = walls_tile_size * walls_tile_number
+row_number = 15
+column_number = 15
+
+width = tile_size * tile_number
+height = tile_size * tile_number
