@@ -5,34 +5,34 @@ from items import Item
 # module initialization
 
 
-class macGyver:     # with sprite method
+class MacGyver:     # with sprite method
     def __init__(self, name, type, image, velocity, x, y, score, over):
         self.name = "Mac Gyver"
         self.type = "heroe"
-        self.image =    # get and load self image
-        self.velocity: int
-        self.rect.x = int
-        self.rect.y = int
-        self.direction = str
+        self.image = image  # get and load self image
+        self.velocity: 2
         self.score = str
         self.over = bool 
+        # self.rect.x = int PYGAME
+        # self.rect.y = int PYGAME
+        # self.direction = "-" PYGAME
 
-    def directions_update(self):
+    def direction_update(self):
         xPosition = get_x_position
         yPosition = get_y_position
-        # if self right direction(x axis):
-            # go to the right
-           # get_x_position based on walls_tile_size
-        # elif self left direction(x axis):
-            # go to the left
-            # get_x_position based on walls_tile_size
-        # elif self up direction(y axis):
-            # go up
-            # get_y_position based on walls_tile_size
-        # elif self down direction(y axis):
-            # go down
-            # get_y_position based on walls_tile_size
-
+        if self.direction == 'L':   # KEYLEFT
+            self.rect.x -= tile_size    # player movement do not exceed tile_size (= one square)
+            self.direction = '-'
+        elif self.direction == 'R':     # KEYRIGHT
+            self.rect.x += tile_size
+            self.direction = '-'
+        elif self.direction == 'U':     # KEYUP
+            self.rect.y -= tile_size
+            self.direction = '-'
+        elif self.direction == 'D':     # KEYDOWN
+            self.rect.y += tile_size
+            self.direction = '-'
+          
     def score_update(self):
         pass
 
@@ -44,12 +44,12 @@ class macGyver:     # with sprite method
             # elif player caught all the items of "items_group":
                 # print congratulations and indicate that the player still has to fight his ennemy(guardian.type)the guardian(guardian.name)
 
-    def Collision(self):
+    def collision(self):
         # configure sprite collide between player and items_group
         # configure sprite collide between player and env_group
         # configure sprite collide between player and guardian
 
-    def guardianInteraction(self):
+    def guardian_interaction(self):
         # if player and guardian collides with player having all the items of items_group into his inventory:
             # print congratulations, the player won
             # game quit
@@ -57,4 +57,4 @@ class macGyver:     # with sprite method
                 # print "Game over, you lose"
                 # game reset
 
-player = macGyver()
+player = MacGyver()
