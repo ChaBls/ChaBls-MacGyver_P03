@@ -1,16 +1,14 @@
-# import the proper modules
-import random
+# pygame import
 from items import Item
-# initialization
+# import random
+# pygame initialization
 
 
 class Guardian(Item):     # with sprite method
-    def __init__(self):
-        self.name = "Guardian"
-        self.type = "ennemy"
-        self.image = image  # get and load self image
-        self.rect = rect    # get image rect
-        self.rect.x = rect.x  # random y position
-        self.rect.y = rect.y  # random y position
+    def guardian(self, type):
+        super().__init__()
+        self.type = type
 
-guardian = Guardian()
+guardian = Guardian("your enemy")
+
+print(guardian.type)
