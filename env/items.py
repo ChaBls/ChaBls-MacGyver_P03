@@ -3,6 +3,7 @@
 # from constantes import *
 # Pygame initialization
 
+# items_group = sprite
 
 class Item:  # with sprite module
     def __init__(self, name, image):
@@ -16,6 +17,7 @@ class Item:  # with sprite module
 ether = Item("ether", "assets/ether.png")
 needle = Item("needle", "assets/aiguille.png")
 plastic_tube = Item("plastic tube", "assets/tube_plastique.png")
+# items_group.add(ether, needle, plastic_tube)
 
 print(ether.name)
 print(needle.image)
