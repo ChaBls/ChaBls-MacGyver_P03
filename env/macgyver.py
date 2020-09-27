@@ -1,8 +1,8 @@
-# import the proper modules
+# pygame import
 from constantes import *
 from guardian import *
 from items import Item
-# module initialization
+# pygame initialization
 
 
 class MacGyver:     # with sprite method
@@ -13,9 +13,9 @@ class MacGyver:     # with sprite method
         self.velocity: 2
         self.score = str
         self.over = bool 
-        # self.rect.x = int PYGAME
-        # self.rect.y = int PYGAME
-        # self.direction = "-" PYGAME
+        # self.rect.x = int
+        # self.rect.y = int
+        # self.direction = "-"
 
     def direction_update(self):
         xPosition = get_x_position
@@ -37,16 +37,15 @@ class MacGyver:     # with sprite method
         pass
 
     def caught_item(self):
-         # if player caught any item of "items_group":
+         # if player caught any item of "items_group":  -> event
             # print someting positive
-            # elif player dont caught anything:
+            # elif player dont caught anything: -> event
                 # print someting motivating
-            # elif player caught all the items of "items_group":
+            # elif player caught all the items of "items_group":    -> event
                 # print congratulations and indicate that the player still has to fight his ennemy(guardian.type)the guardian(guardian.name)
 
     def collision(self):
         # configure sprite collide between player and items_group
-        # configure sprite collide between player and env_group
         # configure sprite collide between player and guardian
 
     def guardian_interaction(self):
