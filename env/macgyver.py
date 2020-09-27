@@ -1,6 +1,6 @@
 # pygame import
 from constantes import *
-from guardian import *
+from guardian import Guardian
 from items import Item
 # pygame initialization
 
