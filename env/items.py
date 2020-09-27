@@ -17,8 +17,5 @@ ether = Item("ether", "assets/ether.png")
 needle = Item("needle", "assets/aiguille.png")
 plastic_tube = Item("plastic tube", "assets/tube_plastique.png")
 
-def __main__():
-    for attribute in Item:
-        print(ether.name)
-        print(needle.image)
-    main()
+print(ether.name)
+print(needle.image)
