@@ -1,7 +1,6 @@
 # pygame import
 from items import Item
 from labyrinth import *
-import string
 # from macgyver import MacGyver
 # from guardian import Guardian
 # from constantes import *
@@ -13,11 +12,11 @@ import string
 
 class Game:
     def __init__(self, color, name):
-        self.color = color   # frame color
-        self.name = name    # frame name
-        self.running = True  # maintain the frame opened
+        self.color = color
+        self.name = name
+        self.running = True
 
-# open and read "labyrinth.py" file tuple
+# open and read "labyrinth.py" file
 fic = open("labyrinth.py", "r")
 print(lab)
 fic.close()
