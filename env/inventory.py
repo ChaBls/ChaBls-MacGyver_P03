@@ -1,6 +1,6 @@
-# import the modules
+# pygame import
 from macgyver import MacGyver
-# module initialization
+# pygame initialization
 
 
 class Inventoy (MacGyver):   # child class
