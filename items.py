@@ -19,5 +19,6 @@ needle = Item("needle", "assets/aiguille.png")
 plastic_tube = Item("plastic tube", "assets/tube_plastique.png")
 # items_group.add(ether, needle, plastic_tube)
 
-print(ether.name)
-print(needle.image)
+if __name__ == "__main__":
+    print(ether.name)
+    print(needle.image)

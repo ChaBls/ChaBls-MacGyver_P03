@@ -5,10 +5,10 @@ from items import Item
 
 
 class Guardian(Item):     # with sprite method
-    def guardian(self, type):
-        super().__init__()
+    def __init__(self, name, image, type):
+        Item.__init__(self, name, image)
         self.type = type
 
-guardian = Guardian("your enemy")
+guardian = Guardian(name="Mr Turner", image="assets/Gardien.png", type="your enemy")
 
 print(guardian.type)
