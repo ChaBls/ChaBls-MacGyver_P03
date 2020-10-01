@@ -1,3 +1,5 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*- 
 # pygame import
 # import random
 # from constantes import *
