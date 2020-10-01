@@ -1,9 +1,11 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*- 
 # pygame import
 from macgyver import MacGyver
 # pygame initialization
 
 
-class Inventoy (MacGyver):   # child class
+class Inventory (MacGyver):   # child class
     def __init__(self):
         pass
         # configure typo of the inventory
