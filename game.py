@@ -13,20 +13,26 @@ from items import Item
 
 class Game:
     def __init__(self, color, name):
-        self.color = color
-        self.name = name
-        self.running = True
+        self.color=color
+        self.name=name
+        self.running=True
 
-i = 0
-# open and read "labyrinth.txt" file as "f"
+line = 0
+walls = []
+wall = walls.append
+
 with open("labyrinth.txt", "r") as f:
-    my_list = [tuple(map(str, i.split(','))) for i in f]   # split each line with ","
-    # create a list of iterable objects with map() method, from the open file
-    for line in f:
-        for i in line:
-            if i == 'M':
-                print("assets/prisma.jpg")
-                continue
-        pass
-    i += 1
-print(f)
+    for column in range(14):
+        if f[column] is M:
+            wall((%line, column))
+        elif f[column] is G:
+            G = guardian
+        elif f[column] is P:
+            P = player
+
+    for i in range(14):
+        for j in range (14):
+            if wall in walls:
+                print('M')
+            elif player.rect.x = i and player.rect.y = j:
+                print('P')

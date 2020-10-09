@@ -9,15 +9,15 @@ from items import Item
 
 class MacGyver:     # with sprite method
     def __init__(self, name, type, image, velocity, x, y, score, over):
-        self.name = "Mac Gyver"
-        self.type = "heroe"
-        self.image = image  # get and load self image
-        self.velocity: 2
-        self.score = str
-        self.over = bool 
-        # self.rect.x = int
-        # self.rect.y = int
-        # self.direction = "-"
+        self.name="Mac Gyver"
+        self.type="heroe"
+        self.image=image  # get and load self image
+        self.velocity=2
+        self.score=str
+        self.over=bool 
+        # self.rect.x=int
+        # self.rect.y=int
+        # self.direction="-"
 
     def direction_update(self):
         xPosition = get_x_position
