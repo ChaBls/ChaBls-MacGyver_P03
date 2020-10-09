@@ -1,6 +1,6 @@
 # !/usr/bin/env python
-# -*- coding: utf-8 -*- 
-# pygame import
+# -*- coding:Utf8 -*-
+# # pygame import
 from items import Item
 # import random
 # pygame initialization

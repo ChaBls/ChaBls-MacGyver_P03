@@ -1,5 +1,5 @@
 # !/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding:Utf8 -*- 
 # pygame import
 from macgyver import MacGyver
 # pygame initialization
@@ -12,7 +12,7 @@ class Inventory (MacGyver):   # child class
         # configure inventory position (x axis)
         # configure inventory position (y axis)
 
-    def totalScore():
+    def total_score():
         pass
         # while player dont have all required items:
             # print "items %, '/3'"

@@ -1,5 +1,5 @@
 # !/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding:Utf8 -*- 
 # pygame import
 from constantes import *
 from guardian import Guardian
@@ -45,10 +45,6 @@ class MacGyver:     # with sprite method
                 # print someting motivating
             # elif player caught all the items of "items_group":    -> event
                 # print congratulations and indicate that the player still has to fight his ennemy(guardian.type)the guardian(guardian.name)
-
-    def collision(self):
-        # configure sprite collide between player and items_group
-        # configure sprite collide between player and guardian
 
     def guardian_interaction(self):
         # if player and guardian collides with player having all the items of items_group into his inventory:
