@@ -7,10 +7,6 @@ from items import Item
 
 
 class Guardian(Item):     # with sprite method
-    def __init__(self, name, image, type):
-        Item.__init__(self, name, image)
+    def __init__(self, name, image, x, y, type):
+        Item.__init__(self, name, image, x, y)
         self.type=type
-
-guardian = Guardian(name="Mr Turner", image="assets/Gardien.png", type="your enemy")
-
-print(guardian.type)
