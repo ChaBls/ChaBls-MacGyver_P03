@@ -9,15 +9,15 @@ from items import Item
 
 class MacGyver:     # with sprite method
     def __init__(self, name, type, image, velocity, x, y, score, over):
-        self.name="Mac Gyver"
-        self.type="heroe"
+        self.name=name
+        self.type=type
         self.image=image  # get and load self image
-        self.velocity=2
-        self.score=str
-        self.over=bool 
-        # self.rect.x=int
-        # self.rect.y=int
-        # self.direction="-"
+        self.velocity=velocity
+        self.score=score
+        self.over=over
+        self.x=x
+        self.y=y
+        self.direction=direction
 
     def direction_update(self):
         xPosition = get_x_position
@@ -53,5 +53,3 @@ class MacGyver:     # with sprite method
             # elif player and guardian collides with player not having all the items required into his inventory:
                 # print "Game over, you lose"
                 # game reset
-
-player = MacGyver()
