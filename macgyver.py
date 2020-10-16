@@ -1,55 +1,23 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*- 
-# pygame import
-from constantes import *
-from guardian import Guardian
-from items import Item
-# pygame initialization
 
 
-class MacGyver:     # with sprite method
-    def __init__(self, name, type, image, velocity, x, y, score, over):
-        self.name=name
-        self.type=type
-        self.image=image  # get and load self image
-        self.velocity=velocity
-        self.score=score
-        self.over=over
+class MacGyver:
+    def __init__(self, x, y):
         self.x=x
         self.y=y
-        self.direction=direction
 
     def direction_update(self):
-        xPosition = get_x_position
-        yPosition = get_y_position
-        if self.direction == 'L':   # KEYLEFT
-            self.rect.x -= tile_size    # player movement do not exceed tile_size (= one square)
-            self.direction = '-'
-        elif self.direction == 'R':     # KEYRIGHT
-            self.rect.x += tile_size
-            self.direction = '-'
-        elif self.direction == 'U':     # KEYUP
-            self.rect.y -= tile_size
-            self.direction = '-'
-        elif self.direction == 'D':     # KEYDOWN
-            self.rect.y += tile_size
-            self.direction = '-'
-          
-    def score_update(self):
-        pass
+        '''For each given keyboard key, a direction will be assigned.'''
 
     def caught_item(self):
-         # if player caught any item of "items_group":  -> event
-            # print someting positive
-            # elif player dont caught anything: -> event
-                # print someting motivating
-            # elif player caught all the items of "items_group":    -> event
-                # print congratulations and indicate that the player still has to fight his ennemy(guardian.type)the guardian(guardian.name)
+        '''I will print sentences evrytime MacGyver(player)
+        caught an item, and then kill this item.
+        I'd like to know how many items still have to be grabbed.'''
+        pass
 
     def guardian_interaction(self):
-        # if player and guardian collides with player having all the items of items_group into his inventory:
-            # print congratulations, the player won
-            # game quit
-            # elif player and guardian collides with player not having all the items required into his inventory:
-                # print "Game over, you lose"
-                # game reset
+        '''This method determines what occurs
+        if MacGyver(player) arrives in front of the guardian
+        will all the items, or only a with a part of them.'''
+        pass
