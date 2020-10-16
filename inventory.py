@@ -1,19 +1,17 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*- 
-# pygame import
 from macgyver import MacGyver
-# pygame initialization
 
 
-class Inventory (MacGyver):   # child class
-    def __init__(self):
-        pass
-        # configure typo of the inventory
-        # configure inventory position (x axis)
-        # configure inventory position (y axis)
+class Inventory:
+    def __init__(self, x, y):
+        self.x=x
+        self.y=y
 
     def total_score():
         pass
+        """This method indicate how many items still have to be caught by MacGyver (player)
+        In case he has caught all of them, the method print it."""
         # while player dont have all required items:
             # print "items %, '/3'"
             # elif player caught all required items:
