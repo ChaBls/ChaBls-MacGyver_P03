@@ -12,25 +12,29 @@ from guardian import Guardian
 
 class Game:
     def __init__(self, color, name):
-        self.color=color
-        self.name=name
-        self.running=True
+        pass
 
-line = 0
-walls = []
+    def labyrinth_reading(self):
+        self.walls = []
 
-with open("labyrinth.txt", "r") as f:
-    for column in range(14):
-        if f[column] is M:
-            walls.append((%line, column))
-        elif f[column] is G:
-            guardian =  Guardian(name="Mr Turner", image="assets/Gardien.png", type="your enemy", x=14, y=1)
-        elif f[column] is P:
-            player = MacGyver(name="Mac Gyver", type="heroe", image="assets/MacGyver.png", velocity=2, score=str, over=False, x=1, y=1)
+        file = open("labyrinth.txt", "r").readlines()
+        for indexLine, line in enumerate(file):
+            for indexCharacter, character in enumerate(line):
+                if character == "M":
+                    self.walls.append(indexCharacter, indexLine)
+                elif character == "G":
+                    self.guardian =  Guardian(x=indexCharacter, y=indexLine)
+                elif character == "P":
+                    self.player = MacGyver(x=indexCharacter, y=indexLine)
 
-    for i in range(14):
-        for j in range (14):
-            if element in walls:
-                print('M')
-            elif player.rect.x = i and player.rect.y = j:
-                print('P')
+    def labyrinth_printing(self):
+        for i in range(14):
+            for j in range(14):
+                if (i, j) in self.walls:
+                    print("M")
+                elif self.player.x == i and self.player.y == j:
+                    print("P")
+                elif self.guardian.x == i and self.guardian.y == j:
+                    print("G")
+                else:
+                    print(" ")
