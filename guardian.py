@@ -1,12 +1,9 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*-
-# # pygame import
 from items import Item
-# import random
-# pygame initialization
 
 
-class Guardian(Item):     # with sprite method
-    def __init__(self, name, image, x, y, type):
-        Item.__init__(self, name, image, x, y)
+class Guardian(Item):
+    def __init__(self, x, y, type):
+        Item.__init__(self, x, y)
         self.type=type
