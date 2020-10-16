@@ -1,31 +1,17 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*- 
-# pygame import
-# import random
-# from constantes import *
-# Pygame initialization
+import random
 
-# items_group = sprite
 
-class Item:  # with sprite module
+class Item:
     """ In this class, I created an instance of
-     self as an object, with name and image as attributes."""
-    def __init__(self, name, image, x, y):
-        self.name=name
-        self.image=image
-        # self.rect=rect with pygame
+     self as an object, with name, image, x and y as attributes."""
+    def __init__(self, x, y):
         self.x=x
         self.y=y
 
-# rect still has to be configured with pygame.
-""" New objects are created. For each of them, I configure their own
-version of Items attributes. """
-ether = Item(name="ether", image="assets/ether.png")
-needle = Item("needle", "assets/aiguille.png")
-plastic_tube = Item("plastic tube", "assets/tube_plastique.png")
-# items_group.add(ether, needle, plastic_tube)
-
-if __name__ == "__main__":
-    """ I print attributes, only if items.py is called """
-    print(ether.name)
-    print(needle.image)
+""" New objects are created, from Item. For each of them, I configure their own
+attributes. x and y are randomly generated"""
+ether = Item(x=random.randint(0, 14), y=random.randint(0, 14))  # random integer in range (0, 14)
+needle = Item(x=random.randint(0, 14), y=random.randint(0, 14))
+plastic_tube = Item(x=random.randint(0, 14), y=random.randint(0, 14))
