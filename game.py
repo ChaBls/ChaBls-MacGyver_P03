@@ -11,9 +11,6 @@ from guardian import Guardian
 
 
 class Game:
-    def __init__(self, color, name):
-        pass
-
     def labyrinth_reading(self):
         self.walls = []
 
@@ -23,7 +20,7 @@ class Game:
                 if character == "M":
                     self.walls.append(indexCharacter, indexLine)
                 elif character == "G":
-                    self.guardian =  Guardian(x=indexCharacter, y=indexLine)
+                    self.guardian =  Guardian(type="your ennemy", x=indexCharacter, y=indexLine)
                 elif character == "P":
                     self.player = MacGyver(x=indexCharacter, y=indexLine)
 
@@ -38,3 +35,6 @@ class Game:
                     print("G")
                 else:
                     print(" ")
+
+labRead = labyrinth_reading()
+labPrint = labyrinth_printing()
