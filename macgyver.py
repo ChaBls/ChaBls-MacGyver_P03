@@ -9,8 +9,8 @@ class MacGyver:
         self.y=y
 
     def direction(self):
-        direc_key = input("R:right, L:left, D:down, U:up")
-        if direc_key == 'R'':
+        direc_key = input("R(right), L(left), D(down), U:(up) :", end="")
+        if direc_key == 'R':
             if self.x == column_number:
                 print("Access denied")
             else:
@@ -38,6 +38,7 @@ class MacGyver:
 
     def direction_update(self):
         '''For each given keyboard key, a direction will be assigned.'''
+        pass
 
     def caught_item(self):
         '''I will print sentences evrytime MacGyver(player)
