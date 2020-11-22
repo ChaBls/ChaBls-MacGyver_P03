@@ -4,12 +4,22 @@ from constantes import *
 
 
 class MacGyver:
-    def __init__(self, x=0, y=0):
+    def __init__(self, x=0, y=0, inventory=[]):
         self.x=x
         self.y=y
+        self.inventory=inventory
 
     def direction(self):
-        direc_key = input("R(right), L(left), D(down), U:(up) :", end="")
+
+        """This method allows the player to chose MacGyver direction.
+        Everytime the player asks for a specific direction, MacGyver coordinates
+        are accordingly changing.
+        If requested coordinates correspond to a wall, the demand is denied in order
+        to avoid any collision. The player is automatically notified and has to type
+        another choice.
+        """
+
+        direc_key = input("R(right), L(left), D(down), U:(up) : ")
         if direc_key == 'R':
             if self.x == column_number:
                 print("Access denied")
@@ -29,25 +39,26 @@ class MacGyver:
                 self.y+=1
                 return self.y
         if direc_key == 'U':
-            if selx.y == 0:
+            if self.y == 0:
                 print("Access denied")
             else:
                 self.y-=1
                 return self.y
 
-
-    def direction_update(self):
-        '''For each given keyboard key, a direction will be assigned.'''
-        pass
-
     def caught_item(self):
-        '''I will print sentences evrytime MacGyver(player)
-        caught an item, and then kill this item.
-        I'd like to know how many items still have to be grabbed.'''
+
+        """Method will print sentences everytime MacGyver
+        caught an item, and then kill the corresponding item.
+        The player will know how many items still have to be grabbed.
+        """
+
         pass
 
     def guardian_interaction(self):
-        '''This method determines what occurs
+
+        """This method determines what occurs
         if MacGyver(player) arrives in front of the guardian
-        will all the items, or only a with a part of them.'''
+        will all the items, or only a with a part of them.
+        """
+
         pass
