@@ -2,12 +2,14 @@
 # -*- coding:Utf8 -*-
 from macgyver import MacGyver
 from guardian import Guardian
+from items import Item
 
 
 class Game:
-    def lab_reading(self):
+    def __init__(self):
         self.walls=[]
 
+    def lab_reading(self):
         file = open("labyrinth.txt", "r").readlines()
         # Open labyrinth file and save it in the variable 'file'
         
@@ -25,16 +27,21 @@ class Game:
                 if letter == 'M':
                     self.walls.append((coorLine, coorLetter))
                 elif letter == 'G':
-                    self.guardian = Guardian(type="ennemy", x=coorLetter, y=coorLine)
+                    self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine)
                 elif letter == 'P':
-                    self.player = MacGyver(x=coorLetter, y=coorLine)
+                    self.player=MacGyver(x=coorLetter, y=coorLine)
 
-    def lab_printing(self):
-        
-        """For i position between 0 and 14 and j position between 0 and 14 : compare 
-        these positions to player, guardian and walls coordinates. According to the
-        result, print the appropriate letter (M for walls, P for player or G for
-        guardian
+    def lab_printing(self, item_list):
+
+        """Line from 0 to 14 and column from 0 to 14 : the method analyze each
+        character position to player, guardian and walls coordinates. According to
+        the result, the method print the appropriate letter ('M' for walls,
+        'P' for player or 'G' for guardian).
+        The method also browse list of items created in 'constantes' file.
+        Random coordinates are chosen for each item, corresponding
+        letter will be printed into the labyrinth.
+        To compare walls/guardian/player positions with items ones avoid
+        collisions: items can pop only where there is available space.
         """
 
         for i in range(14):
@@ -42,12 +49,19 @@ class Game:
                 if (i,j) in self.walls:
                     print('M', end="")
                     # Print 'M' and removes all characters/signs placed after it
-
-                elif i == self.player.x and j == self.player.y:
+                    
+                elif j==self.player.x and i==self.player.y:
                     print('P', end="")
-                elif i == self.guardian.x and j == self.guardian.y:
-                    print('G', end="")
+                elif j==self.guardian.x and i==self.guardian.y:
+                    print('G', end="")   
                 else:
+                    for item in item_list:
+                        if j==ether.x and i==ether.y:
+                            print('E', end="")
+                        if j==needle.x and i==needle.y:
+                            print('N', end="")
+                        if j==plastic_tube.x and i==plastic_tube.y:
+                            print('T', end="")
                     print(" ", end="")
             print("\n")         
             # New line
