@@ -1,15 +1,15 @@
 MMMMMMMMMMMMMMM
-MP  M MMMMMMMMM
-M M M MM      M
-M M   MM    M M
-MMM M MM    M M
-M M M    MM  MM
-M   M MM M MM M
-MMMMM         M
-M     MM  MMMMM
-MMMM MMMM MMMMM
-MM   MM      GM
-M  MM   M MMM M
-MMM   M MMMMMMM
-M   MMM     MMM
+MP  M MM  MMMMM
+M   M MM     MM
+M           MMM
+MMMMMMMM    MMM
+M M       M  MM
+M        M MMMM
+MMMMM        MM
+M         MMMMM
+MMMM   MM MMMMM
+MM   M       GM
+MMM M   M MMMMM
+MMM     MMMMMMM
+M           MMM
 MMMMMMMMMMMMMMM

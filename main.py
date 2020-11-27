@@ -2,22 +2,23 @@
 # -*- coding:Utf8 -*-
 from game import Game
 from macgyver import MacGyver
-from items import Item
 from constantes import *
-import random
-from random import randint
 
 
 # Objects
 labyrinth = Game()
+mac_gyver = MacGyver()
 
-ether=item_list.append(Item(x=random.randint(0,14),y=random.randint(0,14)))
-needle=item_list.append(Item(x=random.randint(0,14),y=random.randint(0,14)))
-plastic_tube=item_list.append(Item(x=random.randint(0,14),y=random.randint(0,14)))
+walls = labyrinth.walls
+item_dict = labyrinth.item_dict
+item_object = labyrinth.item_object
+floor = labyrinth.floor
+loot = labyrinth.loot
+position = mac_gyver.position
 
-# Methods
+# Method
 labyrinth.lab_reading()
-labyrinth.lab_printing(item_list)
+labyrinth.player.where_is_macgyver()
 
 # Loop
 running=True
@@ -28,6 +29,6 @@ Updated labyrinth is printed after each direction change.
 """
 
 while running:
-    labyrinth.player.direction()
-    labyrinth.lab_printing(item_list)
-    continue
+    labyrinth.lab_printing(position)
+    labyrinth.player.direction(walls,floor,loot,item_dict,item_object)
+    labyrinth.player.where_is_macgyver()

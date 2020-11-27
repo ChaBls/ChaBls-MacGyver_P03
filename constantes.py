@@ -1,7 +1,7 @@
-column_number = 15
-row_number = 15
-item_list=[]
-#tile_size = 40
-# tile_number = 134
-# width = tile_size * tile_number
-# height = tile_size * tile_number
+column_number = 14
+row_number = 14
+item_list=[
+    {'name':'ether','image':'E'},
+    {'name':'needle','image':'N'},
+    {'name':'plastic_tube','image':'T'}
+]
