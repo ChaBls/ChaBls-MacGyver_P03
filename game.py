@@ -13,7 +13,6 @@ class Game:
         self.floor=[]
         self.item_object=[]
         self.item_dict={}
-        self.loot=None
 
     def lab_reading(self):
         file = open("labyrinth.txt","r").readlines()
@@ -52,17 +51,18 @@ class Game:
         If 'coor_val' doesn't exist in the dictionnary, Item() instance will be created
         as 'self.loot', then added to 'item_object' list.
         Finally, 'self.loot' object will be added to the dictionnary as key,
-        with coor_val as value.
+        with 'coor_val' as value.
         """
         for i in item_list:
             coor_val=random.choice(self.floor)
-            if coor_val in self.item_dict:
-                continue
-            else:
-                self.loot=self.item_object.append(Item(x=coor_val[1],y=coor_val[0],name=i['name'],image=i['image']))
-                self.item_dict[coor_val]=self.loot
+            loot=self.item_object.append(Item(x=coor_val[1],y=coor_val[0],name=i['name'],image=i['image']))
+            for loot in self.item_object:
+                coor_val_tuple=(loot.y,loot.x)
+                self.item_dict[loot] = coor_val_tuple
+                if coor_val_tuple in self.item_dict:
+                    continue
 
-    def lab_printing(self,position):
+    def lab_printing(self):
 
         """Line from 0 to 14 and column from 0 to 14 : the method compare each
         character position to player, guardian, walls and floor coordinates.
@@ -82,7 +82,7 @@ class Game:
                     print('G',end="")
                 elif (i,j) in self.floor:
                     artifact=False
-                    for loot in self.item_object:    
+                    for loot in self.item_object:
                         if j==loot.x and i==loot.y:
                             print(loot.image,end="")
                             artifact=True

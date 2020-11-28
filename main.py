@@ -5,21 +5,6 @@ from macgyver import MacGyver
 from constantes import *
 
 
-# Objects
-labyrinth = Game()
-mac_gyver = MacGyver()
-
-walls = labyrinth.walls
-item_dict = labyrinth.item_dict
-item_object = labyrinth.item_object
-floor = labyrinth.floor
-loot = labyrinth.loot
-position = mac_gyver.position
-
-# Method
-labyrinth.lab_reading()
-labyrinth.player.where_is_macgyver()
-
 # Loop
 running=True
 
@@ -28,7 +13,29 @@ The player can now chose MacGyver direction continually.
 Updated labyrinth is printed after each direction change.
 """
 
-while running:
-    labyrinth.lab_printing(position)
-    labyrinth.player.direction(walls,floor,loot,item_dict,item_object)
-    labyrinth.player.where_is_macgyver()
+print("Mac Gyver was sent on a perilous mission and, as he was about\n"
+"to discover important secrets, he was suddenly interrupted, finding\n"
+"himself LOCKED IN A MAZE!\n"
+"Of course, he knows how to make a syringe from nothing...\n"
+"Here is the list of all the items you need to find :\n"
+"1- ether bottle\n"
+"2- sharp needle\n"
+"3- thin plastic tube\n"
+"LET'S GO!")
+
+labyrinth = Game()
+
+labyrinth.lab_reading()
+
+walls = labyrinth.walls
+item_dict = labyrinth.item_dict
+item_object = labyrinth.item_object
+floor = labyrinth.floor
+guardian = labyrinth.guardian
+
+while running:        
+    labyrinth.lab_printing()
+    labyrinth.player.direction(walls)
+    labyrinth.player.caught_item(floor,item_object)
+    labyrinth.player.inventory_update()
+    labyrinth.player.guardian_interaction(guardian,floor,item_object)
