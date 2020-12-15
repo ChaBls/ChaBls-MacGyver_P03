@@ -1,10 +1,12 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*-
+import pygame
 from guardian import Guardian
 from items import Item
-from constantes import *
+from constantes import item_list
 from macgyver import MacGyver
 import random
+pygame.init()
 
 
 class Game:
@@ -38,9 +40,10 @@ class Game:
                 elif letter == 'M':
                     self.walls.append((coorLine,coorLetter))
                 elif letter == 'G':
-                    self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine)
+                    self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine, image="assets/Gardien.png")
                 elif letter == 'P':
-                    self.player=MacGyver(x=coorLetter, y=coorLine)
+                    self.player=MacGyver(x=coorLetter, y=coorLine, image="assets/MacGyver.png")
+                    self.floor.append((self.player.y,self.player.x))
                 else:
                     self.floor.append((coorLine, coorLetter))
 
@@ -73,20 +76,16 @@ class Game:
         for i in range(0,15):
             for j in range(0,15):
                 if (i,j) in self.walls:
-                    print('M',end="")
-
-                    # Print 'M' and removes all characters/signs placed after it
+                    pygame.image.load("assets/prisma.jpg").convert_alpha()
                 elif j==self.player.x and i==self.player.y:
-                    print('P',end="")
+                    pygame.image.load(self.player.image).convert_alpha()
                 elif j==self.guardian.x and i==self.guardian.y:
-                    print('G',end="")
+                    pygame.image.load(self.guardian.image).convert_alpha()
                 elif (i,j) in self.floor:
                     artifact=False
                     for loot in self.item_object:
                         if j==loot.x and i==loot.y:
-                            print(loot.image,end="")
                             artifact=True
+                            pygame.image.load(loot.image).convert_alpha()
                     if artifact==False:
-                        print(" ",end="")
-            print("\n",end="")
-            # New line
+                        pygame.image.load("assets/floor.jpg").convert_alpha()
