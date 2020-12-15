@@ -1,18 +1,19 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*-
-from constantes import *
+from constantes import row_number
+from constantes import column_number
 from guardian import Guardian
 import game
 
 
 class MacGyver:
-    def __init__(self,x=0,y=0,inventory=[]):
+    def __init__(self,x=0,y=0,inventory=[],image=None):
         self.x=x
         self.y=y
         self.inventory=inventory
+        self.image=image
 
-    def direction(self,walls):
-    
+    def direction(self,walls,event_key,kright,kleft,kdown,kup):
         """This method allows the player to chose MacGyver direction.
         Everytime the player asks for a specific direction, MacGyver coordinates
         are accordingly changing.
@@ -21,11 +22,10 @@ class MacGyver:
         another choice.
         """
 
-        direc_key = input("R(right), L(left), D(down), U:(up) : ")
-        if direc_key=='R':
+
+        if event_key == kright:
             self.x+=1
             if self.x>=column_number:
-                print("Access denied")
                 self.x-=1
                 return self.x
             elif (self.y,self.x) in walls:
@@ -33,10 +33,10 @@ class MacGyver:
                 return self.x
             else:
                 return self.x
-        if direc_key=='L':
+
+        elif event_key == kleft:
             self.x-=1
             if self.x<=0:
-                print("Access denied")
                 self.x+=1
                 return self.x
             elif (self.y,self.x) in walls:
@@ -44,10 +44,10 @@ class MacGyver:
                 return self.x
             else:
                 return self.x
-        if direc_key == 'D':
+        
+        elif event_key == kdown:
             self.y+=1
             if self.y>=row_number:
-                print("Access denied")
                 self.y-=1
                 return self.y
             elif (self.y,self.x) in walls:
@@ -55,18 +55,16 @@ class MacGyver:
                 return self.y
             else:
                 return self.y
-        if direc_key == 'U':
+
+        elif event_key == kdown:
             self.y-=1
             if self.y<=0:
-                print("Access denied")
                 self.y+=1
             elif (self.y,self.x) in walls:
                 self.y+=1
                 return self.y
             else:
                 return self.y
-        else:
-            print("Wrong answer")
 
     def caught_item(self,floor,item_object):
 
@@ -83,8 +81,7 @@ class MacGyver:
                     self.inventory.append(loot)
                     print("You caught {}".format(loot.name))
                     item_object.remove(loot)
-                    return self.x
-                    return self.y
+                    return (self.y,self.x)
             if artifact==False:
                 pass
 
