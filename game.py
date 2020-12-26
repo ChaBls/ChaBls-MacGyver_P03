@@ -1,5 +1,8 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*-
+import os
+os.environ['SDL_AUDIODRIVER'] = 'dsp'
+import sys
 import pygame
 from guardian import Guardian
 from items import Item
@@ -40,9 +43,9 @@ class Game:
                 elif letter == 'M':
                     self.walls.append((coorLine,coorLetter))
                 elif letter == 'G':
-                    self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine, image="assets/Gardien.png")
+                    self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine)
                 elif letter == 'P':
-                    self.player=MacGyver(x=coorLetter, y=coorLine, image="assets/MacGyver.png")
+                    self.player=MacGyver(x=coorLetter, y=coorLine)
                     self.floor.append((self.player.y,self.player.x))
                 else:
                     self.floor.append((coorLine, coorLetter))
@@ -73,19 +76,38 @@ class Game:
         ('M' for walls, 'P' for player or 'G' for guardian and empty space for floors).
         """
 
+        black = (0,0,0)
+        white = (255,255,255)
+
+        window=(680,400)
+        screen = pygame.display.set_mode(window)
+        pygame.display.set_caption("MACGYVER QUEST")
+        background = pygame.Surface((640, 380))
+        background.convert()    # create a copy of "background" surface
+        background.fill(black)
+        pygame.display.update()
+
         for i in range(0,15):
             for j in range(0,15):
                 if (i,j) in self.walls:
-                    pygame.image.load("assets/prisma.jpg").convert_alpha()
+                    walls_img = pygame.image.load("assets/prisma.jpg").convert_alpha()
+                    walls_position = walls_img.get_rect()
+                    screen.blit(walls_img, walls_position)
                 elif j==self.player.x and i==self.player.y:
-                    pygame.image.load(self.player.image).convert_alpha()
+                    player_img = pygame.image.load("assets/MacGyver.png").convert_alpha()
+                    player_position = player_img.get_rect()
+                    screen.blit(player_img,player_position)
                 elif j==self.guardian.x and i==self.guardian.y:
-                    pygame.image.load(self.guardian.image).convert_alpha()
+                    guardian_img = pygame.image.load("assets/Gardien.png").convert_alpha()
+                    guardian_position = guardian_img.get_rect()
+                    screen.blit(guardian_img,guardian_position)
                 elif (i,j) in self.floor:
                     artifact=False
                     for loot in self.item_object:
                         if j==loot.x and i==loot.y:
                             artifact=True
-                            pygame.image.load(loot.image).convert_alpha()
+                            loot_img = pygame.image.load(loot.image)
+                            loot_position = loot_img.get_rect()
+                            screen.blit(loot_img,loot_position)
                     if artifact==False:
-                        pygame.image.load("assets/floor.jpg").convert_alpha()
+                        pygame.image.load("assets/floor.jpg")
