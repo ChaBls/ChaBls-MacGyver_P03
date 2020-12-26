@@ -1,1 +1,2 @@
-python==3.8
+python==3.8adblockparser==0.7
+pygame==2.0.0
