@@ -7,13 +7,12 @@ import game
 
 
 class MacGyver:
-    def __init__(self,x=0,y=0,inventory=[],image=None):
+    def __init__(self,x=0,y=0,inventory=[]):
         self.x=x
         self.y=y
         self.inventory=inventory
-        self.image=image
 
-    def direction(self,walls,event_key,kright,kleft,kdown,kup):
+    def direction(self,walls,event_key):
         """This method allows the player to chose MacGyver direction.
         Everytime the player asks for a specific direction, MacGyver coordinates
         are accordingly changing.
@@ -23,7 +22,7 @@ class MacGyver:
         """
 
 
-        if event_key == kright:
+        if event_key == 'K_RIGHT':
             self.x+=1
             if self.x>=column_number:
                 self.x-=1
@@ -34,7 +33,7 @@ class MacGyver:
             else:
                 return self.x
 
-        elif event_key == kleft:
+        elif event_key == 'K_LEFT':
             self.x-=1
             if self.x<=0:
                 self.x+=1
@@ -45,7 +44,7 @@ class MacGyver:
             else:
                 return self.x
         
-        elif event_key == kdown:
+        elif event_key == 'K_DOWN':
             self.y+=1
             if self.y>=row_number:
                 self.y-=1
@@ -56,7 +55,7 @@ class MacGyver:
             else:
                 return self.y
 
-        elif event_key == kdown:
+        elif event_key == 'K_UP':
             self.y-=1
             if self.y<=0:
                 self.y+=1
