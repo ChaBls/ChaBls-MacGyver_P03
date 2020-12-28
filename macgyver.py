@@ -14,7 +14,7 @@ class MacGyver:
         self.image=image
         self.rect=self.image.get_rect()
 
-    def direction(self,walls,event_key):
+    def direction(self,walls,event_key,K_RIGHT,K_LEFT,K_DOWN,K_UP):
         """This method allows the player to chose MacGyver direction.
         Everytime the player asks for a specific direction, MacGyver coordinates
         are accordingly changing.
@@ -24,7 +24,7 @@ class MacGyver:
         """
 
 
-        if event_key == 'K_RIGHT':
+        if event_key == K_RIGHT:
             self.x+=1
             if self.x>=column_number:
                 self.x-=1
@@ -35,7 +35,7 @@ class MacGyver:
             else:
                 return self.x
 
-        elif event_key == 'K_LEFT':
+        elif event_key == K_LEFT:
             self.x-=1
             if self.x<=0:
                 self.x+=1
@@ -46,7 +46,7 @@ class MacGyver:
             else:
                 return self.x
         
-        elif event_key == 'K_DOWN':
+        elif event_key == K_DOWN:
             self.y+=1
             if self.y>=row_number:
                 self.y-=1
@@ -57,7 +57,7 @@ class MacGyver:
             else:
                 return self.y
 
-        elif event_key == 'K_UP':
+        elif event_key == K_UP:
             self.y-=1
             if self.y<=0:
                 self.y+=1
@@ -79,10 +79,19 @@ class MacGyver:
             for loot in item_object:
                 if (self.y,self.x) == (loot.y,loot.x):
                     artifact=True
-                    self.inventory.append(loot)
-                    print("You caught {}".format(loot.name))
-                    item_object.remove(loot)
-                    return (self.y,self.x)
+                    if loot.name == 'rope':
+                        print("Do you really need a {}...?".format(loot.name))
+                        item_object.remove(loot)
+                        return (self.y,self.x)
+                    elif loot.name == 'swiss knife':
+                        print("Do you really need a {}...?".format(loot.name))
+                        item_object.remove(loot)
+                        return (self.y,self.x)
+                    else:
+                        self.inventory.append(loot)
+                        item_object.remove(loot)
+                        print("You caught {}".format(loot.name))
+                        return (self.y,self.x)
             if artifact==False:
                 pass
 
@@ -109,6 +118,7 @@ class MacGyver:
             ennemy=True
             if len(self.inventory)==3:
                 print("YEEES!! Mac Gyver put his {}".format(guardian.type),"down!\n","YOU WON!")
+                quit()
             else:
                 print("You don't have all the items... you lose!")
                 quit()
