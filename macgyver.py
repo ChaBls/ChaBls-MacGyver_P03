@@ -7,10 +7,12 @@ import game
 
 
 class MacGyver:
-    def __init__(self,x=0,y=0,inventory=[]):
+    def __init__(self,image=None,x=0,y=0,inventory=[]):
         self.x=x
         self.y=y
         self.inventory=inventory
+        self.image=image
+        self.rect=self.image.get_rect()
 
     def direction(self,walls,event_key):
         """This method allows the player to chose MacGyver direction.
