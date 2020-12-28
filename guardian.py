@@ -9,4 +9,5 @@ class Guardian():
         self.y=y
         self.name=name
         self.image=image
+        self.rect=self.image.get_rect()
         self.type=type
