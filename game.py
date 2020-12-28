@@ -43,9 +43,9 @@ class Game:
                 elif letter == 'M':
                     self.walls.append((coorLine,coorLetter))
                 elif letter == 'G':
-                    self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine)
+                    self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine, image=pygame.image.load("assets/Gardien.png").convert_alpha())
                 elif letter == 'P':
-                    self.player=MacGyver(x=coorLetter, y=coorLine)
+                    self.player=MacGyver(x=coorLetter, y=coorLine, image=pygame.image.load("assets/MacGyver.png").convert_alpha())
                     self.floor.append((self.player.y,self.player.x))
                 else:
                     self.floor.append((coorLine, coorLetter))
@@ -68,24 +68,13 @@ class Game:
                 if coor_val_tuple in self.item_dict:
                     continue
 
-    def lab_printing(self):
+    def lab_printing(self,screen,background):
 
         """Line from 0 to 14 and column from 0 to 14 : the method compare each
         character position to player, guardian, walls and floor coordinates.
         According to the result, the method print the appropriate letter
         ('M' for walls, 'P' for player or 'G' for guardian and empty space for floors).
         """
-
-        black = (0,0,0)
-        white = (255,255,255)
-
-        window=(680,400)
-        screen = pygame.display.set_mode(window)
-        pygame.display.set_caption("MACGYVER QUEST")
-        background = pygame.Surface((640, 380))
-        background.convert()    # create a copy of "background" surface
-        background.fill(black)
-        pygame.display.update()
 
         for i in range(0,15):
             for j in range(0,15):
@@ -94,13 +83,9 @@ class Game:
                     walls_position = walls_img.get_rect()
                     screen.blit(walls_img, walls_position)
                 elif j==self.player.x and i==self.player.y:
-                    player_img = pygame.image.load("assets/MacGyver.png").convert_alpha()
-                    player_position = player_img.get_rect()
-                    screen.blit(player_img,player_position)
+                    background.blit(self.player.image,self.player.rect)
                 elif j==self.guardian.x and i==self.guardian.y:
-                    guardian_img = pygame.image.load("assets/Gardien.png").convert_alpha()
-                    guardian_position = guardian_img.get_rect()
-                    screen.blit(guardian_img,guardian_position)
+                    background.blit(self.guardian.image,self.guardian.rect)
                 elif (i,j) in self.floor:
                     artifact=False
                     for loot in self.item_object:
@@ -108,6 +93,7 @@ class Game:
                             artifact=True
                             loot_img = pygame.image.load(loot.image)
                             loot_position = loot_img.get_rect()
-                            screen.blit(loot_img,loot_position)
+                            screen.blit(loot_img, loot_position)
                     if artifact==False:
                         pygame.image.load("assets/floor.jpg")
+
