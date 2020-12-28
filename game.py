@@ -1,7 +1,6 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*-
 import os
-os.environ['SDL_AUDIODRIVER'] = 'dsp'
 import sys
 import pygame
 from guardian import Guardian
@@ -68,7 +67,7 @@ class Game:
                 if coor_val_tuple in self.item_dict:
                     continue
 
-    def lab_printing(self,screen,background):
+    def lab_printing(self,background,sprite_width,sprite_height):
 
         """Line from 0 to 14 and column from 0 to 14 : the method compare each
         character position to player, guardian, walls and floor coordinates.
@@ -80,20 +79,19 @@ class Game:
             for j in range(0,15):
                 if (i,j) in self.walls:
                     walls_img = pygame.image.load("assets/prisma.jpg").convert_alpha()
-                    walls_position = walls_img.get_rect()
-                    screen.blit(walls_img, walls_position)
+                    background.blit(walls_img,(j*sprite_height,i*sprite_width))
                 elif j==self.player.x and i==self.player.y:
-                    background.blit(self.player.image,self.player.rect)
+                    background.blit(self.player.image,(j*sprite_height,i*sprite_width))
                 elif j==self.guardian.x and i==self.guardian.y:
-                    background.blit(self.guardian.image,self.guardian.rect)
+                    background.blit(self.guardian.image,(j*sprite_height,i*sprite_width))
                 elif (i,j) in self.floor:
                     artifact=False
                     for loot in self.item_object:
                         if j==loot.x and i==loot.y:
                             artifact=True
-                            loot_img = pygame.image.load(loot.image)
-                            loot_position = loot_img.get_rect()
-                            screen.blit(loot_img, loot_position)
+                            loot_img = pygame.image.load(loot.image).convert_alpha()
+                            background.blit(loot_img,(j*sprite_height,i*sprite_width))
                     if artifact==False:
-                        pygame.image.load("assets/floor.jpg")
+                        floor_img = pygame.image.load("assets/floor.jpg").convert_alpha()
+                        background.blit(floor_img,(j*sprite_height,i*sprite_width))
 
