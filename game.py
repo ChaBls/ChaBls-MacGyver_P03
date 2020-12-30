@@ -1,6 +1,7 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*-
 import os
+os.environ['SDL_AUDIODRIVER'] = 'dsp'
 import sys
 import pygame
 from guardian import Guardian
@@ -12,11 +13,14 @@ pygame.init()
 
 
 class Game:
-    def __init__(self):
+    def __init__(self,image=None,icon_image=None):
         self.walls=[]
         self.floor=[]
         self.item_object=[]
         self.item_dict={}
+        self.image=image
+        self.icon_image=icon_image
+
 
     def lab_reading(self):
         file = open("labyrinth.txt","r").readlines()
@@ -78,8 +82,17 @@ class Game:
         for i in range(0,15):
             for j in range(0,15):
                 if (i,j) in self.walls:
-                    walls_img = pygame.image.load("assets/prisma.jpg").convert_alpha()
-                    background.blit(walls_img,(j*sprite_height,i*sprite_width))
+                    for loot in self.item_object:
+                        if loot.name == 'mushroom':
+                            self.image="assets/wall.png"
+                            self.icon_image="assets/icone.png"
+                        else:
+                            self.image="assets/Groovy.png"
+                            self.icon_image="assets/Hippie.png"
+
+                        self.icon_img = pygame.image.load(self.icon_image)
+                        self.walls_img = pygame.image.load(self.image).convert_alpha()
+                        background.blit(self.walls_img,(j*sprite_height,i*sprite_width))
                 elif j==self.player.x and i==self.player.y:
                     background.blit(self.player.image,(j*sprite_height,i*sprite_width))
                 elif j==self.guardian.x and i==self.guardian.y:
@@ -92,6 +105,6 @@ class Game:
                             loot_img = pygame.image.load(loot.image).convert_alpha()
                             background.blit(loot_img,(j*sprite_height,i*sprite_width))
                     if artifact==False:
-                        floor_img = pygame.image.load("assets/floor.jpg").convert_alpha()
+                        floor_img = pygame.image.load("assets/floor.png").convert_alpha()
                         background.blit(floor_img,(j*sprite_height,i*sprite_width))
 
