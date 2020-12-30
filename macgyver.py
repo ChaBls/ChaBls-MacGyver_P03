@@ -14,64 +14,60 @@ class MacGyver:
         self.image=image
         self.rect=self.image.get_rect()
 
-    def direction(self,walls,event_key,K_RIGHT,K_LEFT,K_DOWN,K_UP):
-        """This method allows the player to chose MacGyver direction.
-        Everytime the player asks for a specific direction, MacGyver coordinates
-        are accordingly changing.
-        If requested coordinates correspond to a wall, the demand is denied in order
-        to avoid any collision. The player is automatically notified and has to type
-        another choice.
+    def go_right(self,walls):
+        """The 4 following methods determine what "right", "left", "down"
+        and "up" directions are. Meanwhile, collisions are also managed :
+        if player coordinates are matching with walls or border ones,
+        player x and y axis return to their previous position.
         """
 
-
-        if event_key == K_RIGHT:
-            self.x+=1
-            if self.x>=column_number:
-                self.x-=1
-                return self.x
-            elif (self.y,self.x) in walls:
-                self.x-=1
-                return self.x
-            else:
-                return self.x
-
-        elif event_key == K_LEFT:
+        self.x+=1
+        if self.x>=column_number:
             self.x-=1
-            if self.x<=0:
-                self.x+=1
-                return self.x
-            elif (self.y,self.x) in walls:
-                self.x+=1
-                return self.x
-            else:
-                return self.x
-        
-        elif event_key == K_DOWN:
-            self.y+=1
-            if self.y>=row_number:
-                self.y-=1
-                return self.y
-            elif (self.y,self.x) in walls:
-                self.y-=1
-                return self.y
-            else:
-                return self.y
+            return self.x
+        elif (self.y,self.x) in walls:
+            self.x-=1
+            return self.x
+        else:
+            return self.x
 
-        elif event_key == K_UP:
+    def go_left(self,walls):
+        self.x-=1
+        if self.x<=0:
+            self.x+=1
+            return self.x
+        elif (self.y,self.x) in walls:
+            self.x+=1
+            return self.x
+        else:
+            return self.x
+
+    def go_down(self,walls):        
+        self.y+=1
+        if self.y>=row_number:
             self.y-=1
-            if self.y<=0:
-                self.y+=1
-            elif (self.y,self.x) in walls:
-                self.y+=1
-                return self.y
-            else:
-                return self.y
+            return self.y
+        elif (self.y,self.x) in walls:
+            self.y-=1
+            return self.y
+        else:
+            return self.y
+
+    def go_up(self,walls):
+        self.y-=1
+        if self.y<=0:
+            self.y+=1
+        elif (self.y,self.x) in walls:
+            self.y+=1
+            return self.y
+        else:
+            return self.y
 
     def caught_item(self,floor,item_object):
 
         """Method will print sentences everytime MacGyver
-        caught an item, and then kill the corresponding item.
-        The player will know how many items still have to be grabbed.
+        caught an item, and then kills (removes) the corresponding item.
+        The player know continuously how many items still have to be grabbed.
         """
     
         if (self.y,self.x) in floor:
@@ -80,12 +76,12 @@ class MacGyver:
                 if (self.y,self.x) == (loot.y,loot.x):
                     artifact=True
                     if loot.name == 'rope':
-                        print("Do you really need a {}...?".format(loot.name))
                         item_object.remove(loot)
+                        print("Do you really need a {}...?".format(loot.name))
                         return (self.y,self.x)
-                    elif loot.name == 'swiss knife':
-                        print("Do you really need a {}...?".format(loot.name))
+                    elif loot.name == 'mushroom':
                         item_object.remove(loot)
+                        print("Don't eat this... too late ?!")
                         return (self.y,self.x)
                     else:
                         self.inventory.append(loot)
