@@ -13,6 +13,7 @@ class MacGyver:
         self.inventory=inventory
         self.image=image
         self.rect=self.image.get_rect()
+        self.score_update = 0
 
     def go_right(self,walls):
         """The 4 following methods determine what "right", "left", "down"
@@ -75,7 +76,7 @@ class MacGyver:
             for loot in item_object:
                 if (self.y,self.x) == (loot.y,loot.x):
                     artifact=True
-                    if loot.name == 'rope':
+                    if loot.name == 'swiss knife':
                         item_object.remove(loot)
                         print("Do you really need a {}...?".format(loot.name))
                         return (self.y,self.x)
@@ -84,22 +85,13 @@ class MacGyver:
                         print("Don't eat this... too late ?!")
                         return (self.y,self.x)
                     else:
+                        self.score_update+=1
                         self.inventory.append(loot)
                         item_object.remove(loot)
                         print("You caught {}".format(loot.name))
                         return (self.y,self.x)
             if artifact==False:
                 pass
-
-    def inventory_update(self):
-
-        """Player inventory is updated. This method displays
-        the inventory continuously
-        """
-
-        print("*************************************")
-        print("You have",len(self.inventory),"/3 items in your inventory")
-        print("*************************************")
 
     def guardian_interaction(self,guardian,floor,item_object):
 
@@ -113,10 +105,10 @@ class MacGyver:
         if (self.y,self.x) == (guardian.y,guardian.x):
             ennemy=True
             if len(self.inventory)==3:
-                print("YEEES!! Mac Gyver put his {}".format(guardian.type),"down!\n","YOU WON!")
+                self.winner="YEEES!! Mac Gyver put his {}".format(guardian.type),"down!\n","YOU WON!"
                 quit()
             else:
-                print("You don't have all the items... you lose!")
+                self.loser="You don't have all the items... you lose!"
                 quit()
         elif ennemy==False:
             pass
