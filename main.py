@@ -10,41 +10,61 @@ from constantes import sprite_width
 from constantes import sprite_height
 from constantes import display_width
 from constantes import display_height
-from constantes import yellow
-# from constantes import theme
+from constantes import white
+from constantes import coorTextX
+from constantes import coorTextY
 
 pygame.init()
-# pygame.mixer.init()
 
 
-"""The method 'direction()' is called while the game is running.
-The player can now chose MacGyver direction continually.
-Updated labyrinth is printed after each direction change.
-"""
+# Create an object of Game class
+labyrinth = Game()
 
-labyrinth = Game()  # Create an object of Game class
+# Initialize the window
+screen = pygame.display.set_mode((600,600))
 
-screen = pygame.display.set_mode((600,600)) # Initialize the window
-screen_rect = screen.get_rect() # Get the rectangular area of the surface
-background = pygame.image.load("assets/black_wallpaper.jpg").convert()  # Create a background with a specific image
-inventory_font = pygame.font.Font("assets/Starjedi.ttf",15)
+# Get the rectangular area of the surface
+screen_rect = screen.get_rect()
 
-labyrinth.lab_reading() # Call Game method
+# Create a background with a specific image
+background = pygame.image.load("assets/black_wallpaper.jpg").convert()
+
+# Determine what the score font will be and its size
+score_font = pygame.font.SysFont("arial",32)
+
+# Read labyrinth.txt file, calling 'Game' method
+labyrinth.lab_reading()
+
+# Put a name on top the window screen
+pygame.display.set_caption("MACGYVER QUEST")
+
 
 over = False
 
+# Game is running into this loop
 while not over:
-    labyrinth.lab_printing(background,sprite_width,sprite_height)  # Call Game method
-    pygame.display.set_caption("MACGYVER QUEST")    # Initialize game title
+
+    # Appply background to the screen, with screen surface as a reference for the position
+    screen.blit(background,screen_rect)
+    
+    # Print labyrinth, calling 'Game' method
+    labyrinth.lab_printing(background,sprite_width,sprite_height)
+
+    # Initialize game icon
     pygame.display.set_icon(labyrinth.icon_img)
-    screen.blit(background,screen_rect) # Appply background to the screen, with screen surface as a reference for the position
-    #pygame.mixer.music.load(theme)
-    #pygame.mixer.music.play(-1)
-    #background.blit(labyrinth.player.inventory_update_text,(200,0))
-    labyrinth.player.guardian_interaction(labyrinth.guardian,labyrinth.floor,labyrinth.item_object)
-    for event in pygame.event.get():    # Do something, according to event
+
+    # Initialize score text and display it
+    score = score_font.render("Inventory:" + str(labyrinth.player.score_update),True,white)
+    background.blit(score,(coorTextX,coorTextY))
+
+    # Do something, according to event
+    for event in pygame.event.get(): 
+
+        # The player can close the screen manually or chose a direction      
         if event.type == pygame.QUIT:   # If the player clic on window exit cross
             over = True
+
+        # Call player direction method, accordingly to pressed direction arrow
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 labyrinth.player.go_right(labyrinth.walls)
@@ -54,13 +74,15 @@ while not over:
                 labyrinth.player.go_down(labyrinth.walls)
             elif event.key == pygame.K_UP:
                 labyrinth.player.go_up(labyrinth.walls)
+
+            # The player can close the screen by pressing 'ECHAP'  
             elif event.key == pygame.K_ESCAPE:
                 over = True
-            
-            labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object)
-            labyrinth.player.inventory_update()
 
-            
-    
-    pygame.display.update()
+            # Call player methods    
+            labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object)
+            labyrinth.player.guardian_interaction(labyrinth.guardian,labyrinth.floor,labyrinth.item_object)
+
+    # update the display
+    pygame.display.flip()
 
