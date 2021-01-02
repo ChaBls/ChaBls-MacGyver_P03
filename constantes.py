@@ -5,8 +5,14 @@ sprite_width = 40
 display_width = 300
 display_height = 300
 
-coorTextX = 415
-coorTextY = 5
+# Determine what score text coordinates will be 
+coor_score_TextX = 415
+coor_score_TextY = 5
+
+# Main text coordinates
+coor_main_TextX = 200
+coor_main_TextY = 200
+
 white = (255,255,255)
 
 item_list= [
