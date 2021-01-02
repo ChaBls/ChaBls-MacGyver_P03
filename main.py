@@ -11,8 +11,8 @@ from constantes import sprite_height
 from constantes import display_width
 from constantes import display_height
 from constantes import white
-from constantes import coorTextX
-from constantes import coorTextY
+from constantes import coor_score_TextX
+from constantes import coor_score_TextY
 
 pygame.init()
 
@@ -32,11 +32,14 @@ background = pygame.image.load("assets/black_wallpaper.jpg").convert()
 # Determine what the score font will be and its size
 score_font = pygame.font.SysFont("arial",32)
 
+
 # Read labyrinth.txt file, calling 'Game' method
 labyrinth.lab_reading()
 
 # Put a name on top the window screen
 pygame.display.set_caption("MACGYVER QUEST")
+
+icon_img=pygame.image.load("assets/icone.png")
 
 
 over = False
@@ -51,11 +54,11 @@ while not over:
     labyrinth.lab_printing(background,sprite_width,sprite_height)
 
     # Initialize game icon
-    pygame.display.set_icon(labyrinth.icon_img)
+    pygame.display.set_icon(icon_img)
 
     # Initialize score text and display it
     score = score_font.render("Inventory:" + str(labyrinth.player.score_update),True,white)
-    background.blit(score,(coorTextX,coorTextY))
+    background.blit(score,(coor_score_TextX,coor_score_TextY))
 
     # Do something, according to event
     for event in pygame.event.get(): 
@@ -80,8 +83,8 @@ while not over:
                 over = True
 
             # Call player methods    
-            labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object)
-            labyrinth.player.guardian_interaction(labyrinth.guardian,labyrinth.floor,labyrinth.item_object)
+            labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object,background)
+            labyrinth.player.guardian_interaction(labyrinth.guardian,labyrinth.floor,labyrinth.item_object,background)
 
     # update the display
     pygame.display.flip()
