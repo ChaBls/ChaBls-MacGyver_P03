@@ -14,8 +14,9 @@ pygame.init()
 
 
 class Game:
-    def __init__(self,image=None,icon_image=None):
-        # Game attributes
+    def __init__(self,image=None):
+        # Initialize Game attributes
+
         # empty lists
         self.walls=[]
         self.floor=[]
@@ -24,7 +25,6 @@ class Game:
         self.item_dict={}
         # empty attributes
         self.image=image
-        self.icon_image=icon_image
 
 
     def lab_reading(self):
@@ -102,21 +102,19 @@ class Game:
 
                     """If 'mushroom' is still registered as a name,
                     it means that the object still exists.
-                    Walls and icone will be normally printed
+                    Walls will be printed as expected.
                     """          
                     for loot in self.item_object:
                         if loot.name == 'mushroom':
                             self.image="assets/wall.png"
-                            self.icon_image="assets/icone.png"
+
                         else:
                             """If 'mushroom' doesn't exist as a loot anymore, it means
-                            MacGyver caught it : walls and icon images are changing
+                            MacGyver caught it : walls image is changing.
                             """
                             self.image="assets/Groovy.png"
-                            self.icon_image="assets/Hippie.png"
 
-                        # Pygame gets saves and converts walls and icon images
-                        self.icon_img = pygame.image.load(self.icon_image)
+                        # Pygame gets saves and converts walls image
                         self.walls_img = pygame.image.load(self.image).convert_alpha()
 
                         # Pygame prints walls image (position corresponds to image size * coordinates)
@@ -124,6 +122,7 @@ class Game:
 
                 elif j==self.player.x and i==self.player.y:
                     background.blit(self.player.image,(j*sprite_height,i*sprite_width))
+
                 elif j==self.guardian.x and i==self.guardian.y:
                     background.blit(self.guardian.image,(j*sprite_height,i*sprite_width))
                 
@@ -137,11 +136,14 @@ class Game:
                     artifact=False
                     for loot in self.item_object:
                         if j==loot.x and i==loot.y:
+                                if loot.x==self.player.x and loot.y==self.player.y:
+                                    continue
+                                else:
+                                    # artifact exists
+                                    artifact=True
+                                    loot_img = pygame.image.load(loot.image).convert_alpha()
+                                    background.blit(loot_img,(j*sprite_height,i*sprite_width))
 
-                            # artifact exists
-                            artifact=True
-                            loot_img = pygame.image.load(loot.image).convert_alpha()
-                            background.blit(loot_img,(j*sprite_height,i*sprite_width))
                     if artifact==False:
                         floor_img = pygame.image.load("assets/floor.png").convert_alpha()
                         background.blit(floor_img,(j*sprite_height,i*sprite_width))
