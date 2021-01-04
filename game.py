@@ -67,7 +67,7 @@ class Game:
         the first number of random tuple to attribute y and the second one
         to attribute x.
         Each coordinates tuple (y,x) will be saved into 'coor_val_tuple' variable.
-        If this tuple already exist in 'self.item_dict' dictionnary,
+        If this tuple already exists in 'self.item_dict' dictionnary,
         another tuple from 'self.floor' will be randomly chosen.
 
         Finally, 'self.loot' object will be added to 'item_dict' dictionnary
@@ -79,8 +79,8 @@ class Game:
             for loot in self.item_object:
                 coor_val_tuple=(loot.y,loot.x)
                 self.item_dict[loot] = coor_val_tuple
-                for key in self.item_dict:
-                    if self.item_dict[loot] == coor_val_tuple:
+                for value in self.item_dict:
+                    if self.item_dict[value] == coor_val_tuple:
                         continue
 
     def lab_printing(self,background,sprite_width,sprite_height):
