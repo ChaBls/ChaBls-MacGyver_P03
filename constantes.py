@@ -6,8 +6,8 @@ display_width = 300
 display_height = 300
 
 # Determine what score text coordinates will be 
-coor_score_TextX = 415
-coor_score_TextY = 5
+coor_score_TextX = 390
+coor_score_TextY = 605
 
 white = (255,255,255)
 
