@@ -21,7 +21,7 @@ pygame.init()
 labyrinth = Game()
 
 # Initialize the window
-screen = pygame.display.set_mode((600,600))
+screen = pygame.display.set_mode((600,650))
 
 # Get the rectangular area of the surface
 screen_rect = screen.get_rect()
@@ -58,8 +58,8 @@ while running:
     pygame.display.set_icon(icon_img)
 
     # Initialize score text and display it
-    score = score_font.render("Inventory:" + str(labyrinth.player.score_update),True,white)
-    background.blit(score,(coor_score_TextX,coor_score_TextY))
+    score = score_font.render("Inventory : " + str(labyrinth.player.score_update),True,white)
+    screen.blit(score,(coor_score_TextX,coor_score_TextY))
 
     # Call player methods    
     labyrinth.player.direction(labyrinth.walls)
