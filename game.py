@@ -46,8 +46,9 @@ class Game:
                 If none of the above, it's corresponding to floor : we add their
                 coordinates to 'self.floor' list.
                 """
-
-                if letter == 'M':
+                if letter == '\n':
+                    continue
+                elif letter == 'M':
                     self.walls.append((coorLine,coorLetter))
                 elif letter == 'G':
                     self.guardian=Guardian(type="ennemy", x=coorLetter, y=coorLine, image=pygame.image.load("assets/Gardien.png").convert_alpha())
@@ -75,13 +76,15 @@ class Game:
         """
         for i in item_list:
             coor_val=random.choice(self.floor)
-            loot=self.item_object.append(Item(x=coor_val[1],y=coor_val[0],name=i['name'],image=i['image']))
-            for loot in self.item_object:
-                coor_val_tuple=(loot.y,loot.x)
-                self.item_dict[loot] = coor_val_tuple
-                for value in self.item_dict:
-                    if self.item_dict[value] == coor_val_tuple:
-                        continue
+            print (coor_val)
+            if coor_val == (self.player.y,self.player.x):
+                continue
+            elif coor_val in self.item_dict:
+                continue
+            else:
+                loot=self.item_object.append(Item(x=coor_val[1],y=coor_val[0],name=i['name'],image=i['image']))
+                for loot in self.item_object:
+                    self.item_dict[loot] = coor_val
 
     def lab_printing(self,background,sprite_width,sprite_height):
 
@@ -136,13 +139,10 @@ class Game:
                     artifact=False
                     for loot in self.item_object:
                         if j==loot.x and i==loot.y:
-                                if loot.x==self.player.x and loot.y==self.player.y:
-                                    continue
-                                else:
-                                    # artifact exists
-                                    artifact=True
-                                    loot_img = pygame.image.load(loot.image).convert_alpha()
-                                    background.blit(loot_img,(j*sprite_height,i*sprite_width))
+                            # artifact exists
+                            artifact=True
+                            loot_img = pygame.image.load(loot.image).convert_alpha()
+                            background.blit(loot_img,(j*sprite_height,i*sprite_width))
 
                     if artifact==False:
                         floor_img = pygame.image.load("assets/floor.png").convert_alpha()
