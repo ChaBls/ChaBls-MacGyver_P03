@@ -63,7 +63,7 @@ while running:
 
     # Call player methods    
     labyrinth.player.direction(labyrinth.walls)
-    labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object,background)
+    labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object)
     labyrinth.player.guardian_interaction(labyrinth.guardian,labyrinth.floor,labyrinth.item_object,screen)
 
     # Update the entiere screen
