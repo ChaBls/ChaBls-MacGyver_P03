@@ -3,8 +3,9 @@
 
 
 class Item:
-    def __init__(self,x,y,name,image):
+    def __init__(self,x,y,name,image,drug):
         self.x=x
         self.y=y
         self.name=name
         self.image=image
+        self.drug=drug
