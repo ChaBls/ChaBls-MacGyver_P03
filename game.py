@@ -67,24 +67,25 @@ class Game:
         As 'self.floor' is a list of tuples like following: (y,x), we will use
         the first number of random tuple to attribute y and the second one
         to attribute x.
-        Each coordinates tuple (y,x) will be saved into 'coor_val_tuple' variable.
-        If this tuple already exists in 'self.item_dict' dictionnary,
-        another tuple from 'self.floor' will be randomly chosen.
-
+        If this tuple is matching with 'self.player' coordinates, or already
+        exists in 'self.item_dict' dictionnary, another tuple from 'self.floor' 
+        will be randomly chosen.
         Finally, 'self.loot' object will be added to 'item_dict' dictionnary
-        as key, and 'coor_val_tuple' as value.
+        as key, and 'coor_val' as value.
         """
+        items_coord=[]
         for i in item_list:
-            coor_val=random.choice(self.floor)
-            print (coor_val)
-            if coor_val == (self.player.y,self.player.x):
-                continue
-            elif coor_val in self.item_dict:
-                continue
-            else:
-                loot=self.item_object.append(Item(x=coor_val[1],y=coor_val[0],name=i['name'],image=i['image']))
-                for loot in self.item_object:
-                    self.item_dict[loot] = coor_val
+            success=False
+            while not success:
+                coor_val=random.choice(self.floor)
+                if coor_val == (self.player.y,self.player.x):
+                    continue
+                elif coor_val in items_coord:
+                    continue
+                else:
+                    self.item_object.append(Item(x=coor_val[1],y=coor_val[0],name=i['name'],image=i['image'],drug=i['drug']))
+                    items_coord.append(coor_val)
+                    success=True
 
     def lab_printing(self,background,sprite_width,sprite_height):
 
