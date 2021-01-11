@@ -122,16 +122,9 @@ class MacGyver:
         if (self.y,self.x) == (guardian.y,guardian.x):
             ennemy=True
             if len(self.inventory)==3:
-                winner_sentence="'YEEES!! Mac Gyver put his ennemy down!\n', 'YOU WON!'"
-                winner = main_font.render((winner_sentence),True,white)
-                background.blit(winner,(coor_main_TextX,coor_main_TextY))
                 quit()
             else:
-                loser_sentence="You don't have all the items... you lose!"
-                loser = main_font.render((loser_sentence),True,white)
-                for i in range(1):
-                    background.blit(loser,(coor_main_TextX,coor_main_TextY))
-                quit()
+                pass
         elif ennemy==False:
             pass
 
