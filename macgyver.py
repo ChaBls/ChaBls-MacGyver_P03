@@ -3,6 +3,8 @@
 from constantes import row_number
 from constantes import column_number
 from constantes import white
+from constantes import coor_main_textX
+from constantes import coor_main_textY
 from guardian import Guardian
 import game
 import pygame
@@ -88,7 +90,7 @@ class MacGyver:
             elif event.type == pygame.QUIT:
                 quit()
 
-    def caught_item(self,floor,item_object,screen):
+    def caught_item(self,floor,item_object):
         """Method will print sentences everytime MacGyver
         caught an item, and then kills (removes) the corresponding item.
         The player know continuously how many items still have to be grabbed.
@@ -99,7 +101,7 @@ class MacGyver:
             for loot in item_object:
                 if (self.y,self.x) == (loot.y,loot.x):
                     artifact=True
-                    if loot.name == 'mushroom':
+                    if loot.drug == True:
                         item_object.remove(loot)
                         return (self.y,self.x)
                     else:
@@ -110,7 +112,7 @@ class MacGyver:
             if artifact==False:
                 pass
 
-    def guardian_interaction(self,guardian,floor,item_object,background):
+    def guardian_interaction(self,guardian,floor,item_object,screen):
 
         """This method determines what occurs if MacGyver(player) arrives
         in front of the guardian with only a part of the items (in this case,
@@ -124,7 +126,9 @@ class MacGyver:
             if len(self.inventory)==3:
                 quit()
             else:
-                pass
+                loser_sentence="GAME OVER,YOU'RE DEAD"
+                loser = main_font.render((loser_sentence),True,white)
+                screen.blit(loser,(coor_main_textX,coor_main_textY))
         elif ennemy==False:
             pass
 
