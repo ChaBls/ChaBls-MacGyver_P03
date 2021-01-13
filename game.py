@@ -107,22 +107,25 @@ class Game:
                     """If 'mushroom' is still registered as a name,
                     it means that the object still exists.
                     Walls will be printed as expected.
-                    """          
-                    for loot in self.item_object:
-                        if loot.name == 'mushroom':
-                            self.image="assets/wall.png"
+                    """
+          
+                    if len (self.item_object) > 0:
+                        for loot in self.item_object:
+                            if loot.drug == True:
+                                self.image="assets/wall.png"
+                            else:
+                                """If 'mushroom' doesn't exist as a loot anymore, it means
+                                MacGyver caught it : walls image is changing.
+                                """
+                                self.image="assets/Groovy.png"
+                    elif len (self.item_object) == 0:
+                        self.image="assets/Groovy.png"
 
-                        else:
-                            """If 'mushroom' doesn't exist as a loot anymore, it means
-                            MacGyver caught it : walls image is changing.
-                            """
-                            self.image="assets/Groovy.png"
+                    # Pygame gets saves and converts walls image
+                    self.walls_img = pygame.image.load(self.image).convert_alpha()
 
-                        # Pygame gets saves and converts walls image
-                        self.walls_img = pygame.image.load(self.image).convert_alpha()
-
-                        # Pygame prints walls image (position corresponds to image size * coordinates)
-                        background.blit(self.walls_img,(j*sprite_height,i*sprite_width))
+                    # Pygame prints walls image (position corresponds to image size * coordinates)
+                    background.blit(self.walls_img,(j*sprite_height,i*sprite_width))
 
                 elif j==self.player.x and i==self.player.y:
                     background.blit(self.player.image,(j*sprite_height,i*sprite_width))
