@@ -62,9 +62,19 @@ while running:
     screen.blit(score,(coor_score_TextX,coor_score_TextY))
 
     # Call player methods    
-    labyrinth.player.direction(labyrinth.walls)
     labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object)
     labyrinth.player.guardian_interaction(labyrinth.guardian,labyrinth.floor,labyrinth.item_object,screen)
+    if labyrinth.player.over == False:
+        labyrinth.player.direction(labyrinth.walls) 
+    else:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running=False
+                else:
+                    pass
+            elif event.type == pygame.QUIT:
+                running=False
 
     # Update the entiere screen
     pygame.display.flip()
