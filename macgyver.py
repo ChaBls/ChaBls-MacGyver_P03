@@ -16,13 +16,15 @@ pygame.init()
 main_font = pygame.font.SysFont("arial",20)
 
 class MacGyver:
-    def __init__(self,image=None,x=0,y=0,inventory=[]):
+
+    def __init__(self,image=None,x=0,y=0,inventory=[],over=False):
         self.x=x
         self.y=y
         self.inventory=inventory
         self.image=image
         self.rect=self.image.get_rect()
         self.score_update = 0
+        self.over=over
 
 
     def direction(self,walls):
@@ -86,7 +88,7 @@ class MacGyver:
                 elif event.key == pygame.K_ESCAPE:
                     quit()
 
-            # Quit the game, if the player clic on window exit cross
+                # Quit the game, if the player clic on window exit cross
             elif event.type == pygame.QUIT:
                 quit()
 
@@ -123,9 +125,10 @@ class MacGyver:
         ennemy=False
         if (self.y,self.x) == (guardian.y,guardian.x):
             ennemy=True
-            if len(self.inventory)==3:
+            if self.score_update == 3:
                 quit()
             else:
+                self.over=True
                 loser_sentence="GAME OVER,YOU'RE DEAD"
                 loser = main_font.render((loser_sentence),True,white)
                 screen.blit(loser,(coor_main_textX,coor_main_textY))
