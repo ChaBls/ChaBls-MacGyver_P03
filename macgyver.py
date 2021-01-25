@@ -19,7 +19,7 @@ main_font = pygame.font.SysFont("arial",20)
 
 class MacGyver:
 
-    def __init__(self,image=None,x=0,y=0,inventory=[],over=False):
+    def __init__(self,image=None,x=0,y=0,inventory=[],over=False,high=False):
         self.x=x
         self.y=y
         self.inventory=inventory
@@ -27,6 +27,7 @@ class MacGyver:
         self.rect=self.image.get_rect()
         self.score_update = 0
         self.over=over
+        self.high=high
 
 
     def direction(self,walls):
@@ -94,7 +95,7 @@ class MacGyver:
             elif event.type == pygame.QUIT:
                 quit()
 
-    def caught_item(self,floor,item_object,background,wall_picture):
+    def caught_item(self,floor,item_object,background):
         """Method will print sentences everytime MacGyver
         caught an item, and then kills (removes) the corresponding item.
         The player know continuously how many items still have to be grabbed.
@@ -108,7 +109,7 @@ class MacGyver:
                     background.blit(self.image,(self.x*sprite_height,self.y*sprite_width))
                     item_object.remove(loot)
                     if loot.drug == True:
-                        wall_picture="assets/Groovy.png"
+                        self.high=True
                     else:
                         self.score_update+=1
                         self.inventory.append(loot)
