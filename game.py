@@ -14,7 +14,7 @@ pygame.init()
 
 
 class Game:
-    def __init__(self,image=None):
+    def __init__(self):
         # Initialize Game attributes
 
         # empty lists
@@ -24,7 +24,7 @@ class Game:
         #empty dictionnary
         self.item_dict={}
         # empty attributes
-        self.image=image
+        self.wall_picture="assets/wall.png"
 
 
     def lab_reading(self):
@@ -104,25 +104,8 @@ class Game:
                 # (coorLine,coorLetter) tuple is compared to 'self.walls' ones
                 if (i,j) in self.walls:
 
-                    """If 'mushroom' is still registered as a name,
-                    it means that the object still exists.
-                    Walls will be printed as expected.
-                    """
-          
-                    if len (self.item_object) > 0:
-                        for loot in self.item_object:
-                            if loot.drug == True:
-                                self.image="assets/wall.png"
-                            else:
-                                """If 'mushroom' doesn't exist as a loot anymore, it means
-                                MacGyver caught it : walls image is changing.
-                                """
-                                self.image="assets/Groovy.png"
-                    elif len (self.item_object) == 0:
-                        self.image="assets/Groovy.png"
-
                     # Pygame gets saves and converts walls image
-                    self.walls_img = pygame.image.load(self.image).convert_alpha()
+                    self.walls_img = pygame.image.load(self.wall_picture).convert_alpha()
 
                     # Pygame prints walls image (position corresponds to image size * coordinates)
                     background.blit(self.walls_img,(j*sprite_height,i*sprite_width))
