@@ -94,7 +94,7 @@ class MacGyver:
             elif event.type == pygame.QUIT:
                 quit()
 
-    def caught_item(self,floor,item_object,background):
+    def caught_item(self,floor,item_object,background,wall_picture):
         """Method will print sentences everytime MacGyver
         caught an item, and then kills (removes) the corresponding item.
         The player know continuously how many items still have to be grabbed.
@@ -108,7 +108,7 @@ class MacGyver:
                     background.blit(self.image,(self.x*sprite_height,self.y*sprite_width))
                     item_object.remove(loot)
                     if loot.drug == True:
-                        pass
+                        wall_picture="assets/Groovy.png"
                     else:
                         self.score_update+=1
                         self.inventory.append(loot)
