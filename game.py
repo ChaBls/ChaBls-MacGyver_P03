@@ -138,7 +138,7 @@ class Game:
                     we have to compare floor position to items ones, in order to know
                     which image (item or floor one) has to be printed by Pygame
                     """
-
+                    floor_img = pygame.image.load("assets/floor.png").convert_alpha()
                     # artifact does not exist yet
                     artifact=False
                     for loot in self.item_object:
@@ -149,6 +149,5 @@ class Game:
                             background.blit(loot_img,(j*sprite_height,i*sprite_width))
 
                     if artifact==False:
-                        floor_img = pygame.image.load("assets/floor.png").convert_alpha()
                         background.blit(floor_img,(j*sprite_height,i*sprite_width))
 
