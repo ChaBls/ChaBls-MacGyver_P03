@@ -5,6 +5,8 @@ from constantes import column_number
 from constantes import white
 from constantes import coor_main_textX
 from constantes import coor_main_textY
+from constantes import sprite_height
+from constantes import sprite_width
 from guardian import Guardian
 import game
 import pygame
@@ -92,7 +94,7 @@ class MacGyver:
             elif event.type == pygame.QUIT:
                 quit()
 
-    def caught_item(self,floor,item_object):
+    def caught_item(self,floor,item_object,background):
         """Method will print sentences everytime MacGyver
         caught an item, and then kills (removes) the corresponding item.
         The player know continuously how many items still have to be grabbed.
@@ -103,16 +105,14 @@ class MacGyver:
             for loot in item_object:
                 if (self.y,self.x) == (loot.y,loot.x):
                     artifact=True
+                    background.blit(self.image,(self.x*sprite_height,self.y*sprite_width))
+                    item_object.remove(loot)
                     if loot.drug == True:
-                        item_object.remove(loot)
-                        return (self.y,self.x)
+                        pass
                     else:
                         self.score_update+=1
                         self.inventory.append(loot)
-                        item_object.remove(loot)
-                        return (self.y,self.x)
-            if artifact==False:
-                pass
+        return item_object
 
     def guardian_interaction(self,guardian,floor,item_object,screen):
 
