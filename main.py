@@ -62,7 +62,7 @@ while running:
     screen.blit(score,(coor_score_TextX,coor_score_TextY))
 
     # Call player methods    
-    labyrinth.item_object=labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object,background)
+    labyrinth.item_object=labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object,background,labyrinth.wall_picture)
     labyrinth.player.guardian_interaction(labyrinth.guardian,labyrinth.floor,labyrinth.item_object,screen)
     if labyrinth.player.over == False:
         labyrinth.player.direction(labyrinth.walls) 
