@@ -104,6 +104,12 @@ class Game:
                 # (coorLine,coorLetter) tuple is compared to 'self.walls' ones
                 if (i,j) in self.walls:
 
+                    if self.player.high == True:
+                        self.wall_picture="assets/Groovy.png"
+                    
+                    else:
+                        pass
+
                     # Pygame gets saves and converts walls image
                     self.walls_img = pygame.image.load(self.wall_picture).convert_alpha()
 
