@@ -4,15 +4,15 @@ import os
 os.environ['SDL_AUDIODRIVER'] = 'dsp'
 import sys
 import pygame
-from game import Game
-from macgyver import MacGyver
-from constantes import sprite_width
-from constantes import sprite_height
-from constantes import display_width
-from constantes import display_height
-from constantes import white
-from constantes import coor_score_TextX
-from constantes import coor_score_TextY
+from Config.game import Game
+from Entities.macgyver import MacGyver
+from Config.constantes import sprite_width
+from Config.constantes import sprite_height
+from Config.constantes import display_width
+from Config.constantes import display_height
+from Config.constantes import white
+from Config.constantes import coor_score_TextX
+from Config.constantes import coor_score_TextY
 
 pygame.init()
 
@@ -27,7 +27,7 @@ screen = pygame.display.set_mode((600,650))
 screen_rect = screen.get_rect()
 
 # Create a background with a specific image
-background = pygame.image.load("assets/black_wallpaper.jpg").convert()
+background = pygame.image.load("Config/assets/black_wallpaper.jpg").convert()
 
 # Determine what the score font will be and its size
 score_font = pygame.font.SysFont("arial",32)
@@ -38,7 +38,7 @@ labyrinth.lab_reading()
 
 # Put a name on top the window screen and load the icon
 pygame.display.set_caption("MACGYVER QUEST")
-icon_img=pygame.image.load("assets/icone.png")
+icon_img=pygame.image.load("Config/assets/icone.png")
 
 
 running = True
