@@ -31,3 +31,5 @@ $ pipenv run python3 main.py
 * Utilisez les flèches directionnelles pour déplacer MacGyver
 * Le fenêtre du jeu peut être fermée à tout moment en cliquant sur la croix
 prévue à cet effet, ou bien en appuyant sur 'ECHAP'
+***
+[Code source du projet](https://github.com/ChaBls/ChaBls-MacGyver_P03)
