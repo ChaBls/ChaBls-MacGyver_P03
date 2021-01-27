@@ -1,3 +1,6 @@
+# !/usr/bin/env python
+# -*- coding:Utf8 -*-
+
 """ 'colum_number' and 'row_number' are
 used to determine labyrinth borders
 """
@@ -25,8 +28,8 @@ white = (255,255,255)
 
 # List of 3 dictionnaries, used in 'game.py'
 item_list= [
-    {'name':'ether','image': "Config/assets/ether.png",'drug':False},
-    {'name':'needle','image': "Config/assets/aiguille.png",'drug':False},
-    {'name':'plastic tube','image': "Config/assets/tube_plastique.png",'drug':False},
-    {'name':'mushroom','image':"Config/assets/mushroom.png",'drug':True}
+    {'name':'ether','image': "Entities/assets/ether.png",'drug':False},
+    {'name':'needle','image': "Entities/assets/aiguille.png",'drug':False},
+    {'name':'plastic tube','image': "Entities/assets/tube_plastique.png",'drug':False},
+    {'name':'mushroom','image':"Entities/assets/mushroom.png",'drug':True}
 ]
