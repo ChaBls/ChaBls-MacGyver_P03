@@ -8,14 +8,15 @@ from Config.constantes import coor_main_textY
 from Config.constantes import sprite_height
 from Config.constantes import sprite_width
 from Entities.guardian import Guardian
-import Config.game
+import Entities.game
 import pygame
 import time
+
 pygame.init()
 
-
-# Determine what the score font will be and its size
+# Determines what the score font and its size will be and save it
 main_font = pygame.font.SysFont("arial",20)
+
 
 class MacGyver:
 
@@ -91,14 +92,26 @@ class MacGyver:
                 elif event.key == pygame.K_ESCAPE:
                     quit()
 
-                # Quit the game, if the player clic on window exit cross
+            # Quit the game, if the player clic on the window exit cross
             elif event.type == pygame.QUIT:
                 quit()
 
-    def caught_item(self,floor,item_object,background):
-        """Method will print sentences everytime MacGyver
-        caught an item, and then kills (removes) the corresponding item.
-        The player know continuously how many items still have to be grabbed.
+    def caught_item(self,floor,item_object):
+        """The following method will allow MacGyver to 'take' the items:
+        if MacGyver is placed on an item, 'artifact' boolean becomes 'True';
+        and the item is automatically removed from 'item_object' list
+        (game attribute, where we first created all the items).
+        The image of the caught item will no longer be displayed by 'lab_printing',
+        as its not exsting anymore in 'item_object'.
+
+        If 'drug' boolean is 'True', player attribute 'high' is 'True'.
+        The item is not saved into player's inventory.
+
+        If 'drug' boolean is 'False', the item is placed into player's inventory,
+        player 'score_update' attribute is incremented (+1); player attribute 'high'
+        remains unchanged.
+
+        The player knows continuously how many items have been caught already.
         """
 
         if (self.y,self.x) in floor:
@@ -106,7 +119,6 @@ class MacGyver:
             for loot in item_object:
                 if (self.y,self.x) == (loot.y,loot.x):
                     artifact=True
-                    background.blit(self.image,(self.x*sprite_height,self.y*sprite_width))
                     item_object.remove(loot)
                     if loot.drug == True:
                         self.high=True
@@ -117,10 +129,16 @@ class MacGyver:
 
     def guardian_interaction(self,guardian,floor,item_object,screen):
 
-        """This method determines what occurs if MacGyver(player) arrives
-        in front of the guardian with only a part of the items (in this case,
-        a message is printed, the game is over and stop) or all of them (in this case,
-        a mesage is printed, player wins and the game is over)
+        """'ennemy' boolean becomes 'True' as soon as MacGyver meets the guardian.
+        
+        This method determines what occurs if MacGyver arrives
+        in front of the guardian with only a part of the required items:
+        a message is printed in order to inform the player that the game is over
+        and the screen is freezed.
+
+        If he's got all the required items
+        ('score_update' attribute has been incremented by 3):
+        the window closes automatically, player won.
         """
 
         ennemy=False
