@@ -13,7 +13,7 @@ Voici les étapes d'installation du jeu, sous environnement 'Pipenv'
 * Installer pipenv
 * Importer le projet à partir du dépôt
 * Se positionner dans la copie du dépôt
-* Installer les dépendances
+* Installer les dépendances (à l'aide de Pipfile)
 * Activer l'environnement virtuel
 * Lancer le jeu
 ```
@@ -21,7 +21,7 @@ $ sudo apt-get install pip3
 $ pip3 install pipenv
 $ git clone https://github.com/ChaBls/ChaBls-MacGyver_P03
 $ cd path/to/ChaBls-MacGyver_P03
-$ pipenv install -r path/to/requirements
+$ pipenv install -r path/to/Pipfile
 $ pipenv shell
 $ pipenv run python3 main.py
 ```
