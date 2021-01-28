@@ -21,7 +21,7 @@ $ sudo apt-get install pip3
 $ pip3 install pipenv
 $ git clone https://github.com/ChaBls/ChaBls-MacGyver_P03
 $ cd path/to/ChaBls-MacGyver_P03
-$ pipenv install -r path/to/Pipfile
+$ pipenv install
 $ pipenv shell
 $ pipenv run python3 main.py
 ```
