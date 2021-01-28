@@ -1,6 +1,6 @@
 # Aidez MacGyver à s'échapper!
 ***
-Ce projet OpenClassRooms est un jeu sous forme de labyrinthe,codé en langage Python.
+Ce projet OpenClassRooms est un jeu sous forme de labyrinthe, codé en langage Python.
 MacGyver (incarné par le joueur) doit trouver trois items afin de concevoir
 une seringue à l'aide de laquelle il endormira le gardien pour s'échapper.
 [En savoir plus sur le projet](https://openclassrooms.com/fr/projects/aidez-macgyver-a-sechapper/assignment)
@@ -29,7 +29,7 @@ $ pipenv run python3 main.py
 ### Consignes
 ***
 * Utilisez les flèches directionnelles pour déplacer MacGyver
-* Le fenêtre du jeu peut être fermée à tout moment en cliquant sur la croix
+* La fenêtre du jeu peut être fermée à tout moment en cliquant sur la croix
 prévue à cet effet, ou bien en appuyant sur 'ECHAP'
 ***
 [Code source du projet](https://github.com/ChaBls/ChaBls-MacGyver_P03)
