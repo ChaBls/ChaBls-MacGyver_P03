@@ -32,4 +32,11 @@ $ pipenv run python3 main.py
 * La fenêtre du jeu peut être fermée à tout moment en cliquant sur la croix
 prévue à cet effet, ou bien en appuyant sur 'ECHAP'
 ***
+#### But du jeu
+Vous incarnez MacGyver, bloqué dans un labyrinthe.
+Afin d'endormir le gardien qui vous retient prisonnier, voici ce que vous devez trouver :
+* Un tube en plastique
+* Une aiguille
+* Un flacon d'éther
+***
 [Code source du projet](https://github.com/ChaBls/ChaBls-MacGyver_P03)
