@@ -9,13 +9,11 @@ import sys
 import pygame
 from Entities.game import Game
 from Entities.macgyver import MacGyver
-from Config.constantes import sprite_width
-from Config.constantes import sprite_height
-from Config.constantes import display_width
-from Config.constantes import display_height
-from Config.constantes import white
-from Config.constantes import coor_score_TextX
-from Config.constantes import coor_score_TextY
+from Config.constantes import SPRITE_WIDTH
+from Config.constantes import SPRITE_HEIGHT
+from Config.constantes import WHITE
+from Config.constantes import COOR_SCORE_TEXTX
+from Config.constantes import COOR_SCORE_TEXTY
 
 # Initialize Pygame
 pygame.init()
@@ -49,7 +47,7 @@ while running:
     screen.blit(background,screen_rect)
     
     # Print labyrinth, calling 'Game' method
-    labyrinth.lab_printing(background,sprite_width,sprite_height)
+    labyrinth.lab_printing(background,SPRITE_WIDTH,SPRITE_HEIGHT)
 
     # Display game icon
     pygame.display.set_icon(icon_img)
@@ -58,9 +56,9 @@ while running:
     pygame.font.render parameters = (text, antialias, color, background)
     antialias is a boolean : if 'True', characters are smoothered
     """
-    score = score_font.render("Inventory : " + str(labyrinth.player.score_update),True,white)
+    score = score_font.render("Inventory : " + str(labyrinth.player.score_update),True,WHITE)
     # Display score text, with (X,Y) configured into 'constantes' file
-    screen.blit(score,(coor_score_TextX,coor_score_TextY))
+    screen.blit(score,(COOR_SCORE_TEXTX,COOR_SCORE_TEXTY))
 
     # Call player methods    
     labyrinth.item_object=labyrinth.player.caught_item(labyrinth.floor,labyrinth.item_object)
