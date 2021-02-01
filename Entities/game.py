@@ -5,7 +5,7 @@ import sys
 import pygame
 from Entities.guardian import Guardian
 from Entities.items import Item
-from Config.constantes import item_list
+from Config.constantes import ITEM_LIST
 from Entities.macgyver import MacGyver
 import random
 
@@ -63,7 +63,7 @@ class Game:
 
         """An empty list nammed 'items_coord' is created.
 
-        'item_list' is a list of 4 dictionnaries that we created in 'constantes' file.
+        'ITEM_LIST' is a list of 4 dictionnaries that we created in 'constantes' file.
         Each dictionnary contains 3 definitions ('name', 'image' and 'drug').
 
         For each dictionnary of this list and while 'success' boolean is 'False',
@@ -80,7 +80,7 @@ class Game:
         """
         
         items_coord=[]
-        for i in item_list:
+        for i in ITEM_LIST:
             success=False
             while not success:
                 coor_val=random.choice(self.floor)
