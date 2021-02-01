@@ -1,12 +1,10 @@
 # !/usr/bin/env python
 # -*- coding:Utf8 -*-
-from Config.constantes import row_number
-from Config.constantes import column_number
-from Config.constantes import white
-from Config.constantes import coor_main_textX
-from Config.constantes import coor_main_textY
-from Config.constantes import sprite_height
-from Config.constantes import sprite_width
+from Config.constantes import ROW_NUMBER
+from Config.constantes import COLUMN_NUMBER
+from Config.constantes import WHITE
+from Config.constantes import COOR_MAIN_TEXTX
+from Config.constantes import COOR_MAIN_TEXTY
 from Entities.guardian import Guardian
 import Entities.game
 import pygame
@@ -47,7 +45,7 @@ class MacGyver:
                 # If the pressed key is right direction arrow
                 if event.key == pygame.K_RIGHT:
                     self.x+=1
-                    if self.x>=column_number:
+                    if self.x>=COLUMN_NUMBER:
                         self.x-=1
                         return self.x
                     elif (self.y,self.x) in walls:
@@ -69,7 +67,7 @@ class MacGyver:
 
                 elif event.key == pygame.K_DOWN:
                     self.y+=1
-                    if self.y>=row_number:
+                    if self.y>=ROW_NUMBER:
                         self.y-=1
                         return self.y
                     elif (self.y,self.x) in walls:
@@ -149,8 +147,8 @@ class MacGyver:
             else:
                 self.over=True
                 loser_sentence="GAME OVER,YOU'RE DEAD"
-                loser = main_font.render((loser_sentence),True,white)
-                screen.blit(loser,(coor_main_textX,coor_main_textY))
+                loser = main_font.render((loser_sentence),True,WHITE)
+                screen.blit(loser,(COOR_MAIN_TEXTX,COOR_MAIN_TEXTY))
         elif ennemy==False:
             pass
 
